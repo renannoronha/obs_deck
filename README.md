@@ -1,6 +1,6 @@
 # OBS Deck
 
-<img src="https://raw.githubusercontent.com/renannoronha/obs_deck/master/lib/screenshot/screenshot1.png" width="50%" /> <img src="https://raw.githubusercontent.com/renannoronha/obs_deck/master/lib/screenshot/screenshot2.png" width="50%" />
+<img src="https://raw.githubusercontent.com/renannoronha/obs_deck/master/lib/screenshot/screenshot1.png" width="49%" /> <img src="https://raw.githubusercontent.com/renannoronha/obs_deck/master/lib/screenshot/screenshot2.png" width="49%" />
 
 ## What is OBS Deck
 
