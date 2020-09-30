@@ -51,9 +51,9 @@ class ObsWebsocket {
     String authReponse;
 
     this.debug(1, 'CONECTING!!!!!');
-    this.debug(1, 'wss://${this._address}:${this._port}');
+    this.debug(1, 'ws://${this._address}:${this._port}');
     this._channel = WebSocketChannel.connect(
-      Uri.parse('wss://${this._address}:${this._port}'),
+      Uri.parse('ws://${this._address}:${this._port}'),
     );
     this.debug(1, 'CHANNEL READY!');
     this._broadcast = this._channel.stream.asBroadcastStream();
