@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:obs_deck/themes.dart';
 
 @immutable
 class SettingsState {
@@ -19,6 +20,8 @@ class SettingsState {
     this.studioButtonLabel,
     this.studioButtonColor,
     this.studioMode,
+    this.theme,
+    this.themeData,
     this.address,
     this.port,
     this.password,
@@ -40,6 +43,9 @@ class SettingsState {
   final String studioButtonLabel;
   final Color studioButtonColor;
   final bool studioMode;
+  
+  final String theme;
+  final dynamic themeData;
 
   final TextEditingController address;
   final TextEditingController port;
@@ -62,6 +68,8 @@ class SettingsState {
       studioButtonLabel: 'Studio Mode',
       studioButtonColor: Color.fromRGBO(199, 199, 199, 1),
       studioMode: false,
+      theme: 'Light',
+      themeData: Themes().light,
       address: TextEditingController(text: addr ?? '127.0.0.1'),
       port: TextEditingController(text: pt ?? '4444'),
       password: TextEditingController(text: pass ?? '123456'),
@@ -84,6 +92,8 @@ class SettingsState {
     studioButtonLabel,
     studioButtonColor,
     studioMode,
+    theme,
+    themeData,
     TextEditingController address,
     TextEditingController port,
     TextEditingController password,
@@ -104,6 +114,8 @@ class SettingsState {
       studioButtonLabel: studioButtonLabel ?? this.studioButtonLabel,
       studioButtonColor: studioButtonColor ?? this.studioButtonColor,
       studioMode: studioMode ?? this.studioMode,
+      theme: theme ?? this.theme,
+      themeData: themeData ?? this.themeData,
       address: address ?? this.address,
       port: port ?? this.port,
       password: password ?? this.password,
@@ -129,6 +141,8 @@ class SettingsState {
           studioButtonLabel == other.studioButtonLabel &&
           studioButtonColor == other.studioButtonColor &&
           studioMode == other.studioMode &&
+          theme == other.theme &&
+          themeData == other.themeData &&
           address == other.address &&
           port == other.port &&
           password == other.password;
@@ -150,6 +164,8 @@ class SettingsState {
       studioButtonLabel.hashCode ^
       studioButtonColor.hashCode ^
       studioMode.hashCode ^
+      theme.hashCode ^
+      themeData.hashCode ^
       address.hashCode ^
       port.hashCode ^
       password.hashCode;

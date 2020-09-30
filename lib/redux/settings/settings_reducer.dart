@@ -1,10 +1,29 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:obs_deck/redux/app/app_state.dart';
 import 'package:obs_deck/redux/settings/settings_actions.dart';
 import 'package:obs_deck/redux/settings/settings_state.dart';
+import 'package:obs_deck/themes.dart';
 
 SettingsState settingsReducer(AppState state, dynamic action) {
-  if (action is ToggleConnectAction) {
+  if (action is ChangeThemeAction) {
+    var newTheme;
+    try {
+      if (action.theme == 'Light') {
+        newTheme = Platform.isAndroid ? Themes().light : Themes().lightCupertino;
+      } else if (action.theme == 'Dark') {
+        newTheme = Platform.isAndroid ? Themes().dark : Themes().darkCupertino;
+      }
+    } catch (e) {
+      if (action.theme == 'Light') {
+        newTheme = Themes().light;
+      } else if (action.theme == 'Dark') {
+        newTheme = Themes().dark;
+      }
+    }
+    return state.settingsState.copyWith(theme: action.theme, themeData: newTheme);
+  } else if (action is ToggleConnectAction) {
     return _toggleConnectState(state, action);
   } else if (action is ToggleStreamAction) {
     return _toggleStreamState(state.settingsState, action);
@@ -26,11 +45,9 @@ SettingsState settingsReducer(AppState state, dynamic action) {
 
 SettingsState _toggleConnectState(AppState state, ToggleConnectAction action) {
   if (action.toggle) {
-    return state.settingsState
-        .copyWith(connectButtonLabel: 'Connected', connectButtonColor: Colors.red, connect: action.toggle);
+    return state.settingsState.copyWith(connectButtonLabel: 'Connected', connectButtonColor: Colors.red, connect: action.toggle);
   } else {
-    return state.settingsState.copyWith(
-        connectButtonLabel: 'Connect', connectButtonColor: Color.fromRGBO(199, 199, 199, 1), connect: action.toggle);
+    return state.settingsState.copyWith(connectButtonLabel: 'Connect', connectButtonColor: Color.fromRGBO(199, 199, 199, 1), connect: action.toggle);
   }
 }
 
@@ -38,10 +55,7 @@ SettingsState _toggleStreamState(SettingsState state, ToggleStreamAction action)
   if (action.toggle) {
     return state.copyWith(streamButtonLabel: 'Streaming', streamButtonColor: Colors.red, stream: action.toggle);
   } else {
-    return state.copyWith(
-        streamButtonLabel: 'Start Streaming',
-        streamButtonColor: Color.fromRGBO(199, 199, 199, 1),
-        stream: action.toggle);
+    return state.copyWith(streamButtonLabel: 'Start Streaming', streamButtonColor: Color.fromRGBO(199, 199, 199, 1), stream: action.toggle);
   }
 }
 
@@ -49,10 +63,7 @@ SettingsState _toggleRecordState(SettingsState state, ToggleRecordAction action)
   if (action.toggle) {
     return state.copyWith(recordButtonLabel: 'Recording', recordButtonColor: Colors.red, record: action.toggle);
   } else {
-    return state.copyWith(
-        recordButtonLabel: 'Start Recording',
-        recordButtonColor: Color.fromRGBO(199, 199, 199, 1),
-        record: action.toggle);
+    return state.copyWith(recordButtonLabel: 'Start Recording', recordButtonColor: Color.fromRGBO(199, 199, 199, 1), record: action.toggle);
   }
 }
 
@@ -60,8 +71,7 @@ SettingsState _togglePauseState(SettingsState state, TogglePauseAction action) {
   if (action.toggle) {
     return state.copyWith(pauseButtonLabel: 'Resume Recording', pauseButtonColor: Colors.yellow, pause: action.toggle);
   } else {
-    return state.copyWith(
-        pauseButtonLabel: 'Pause Recording', pauseButtonColor: Color.fromRGBO(199, 199, 199, 1), pause: action.toggle);
+    return state.copyWith(pauseButtonLabel: 'Pause Recording', pauseButtonColor: Color.fromRGBO(199, 199, 199, 1), pause: action.toggle);
   }
 }
 

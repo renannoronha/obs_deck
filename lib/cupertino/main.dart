@@ -15,16 +15,12 @@ class MyCupertinoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
       store: this.store,
-      child: CupertinoApp(
-        debugShowCheckedModeBanner: false,
-        title: 'OBS Deck',
-        theme: CupertinoThemeData(
-          primaryColor: const Color(0xFF1C306D),
-          // accentColor: const Color(0xFFFFAD32),
-          scaffoldBackgroundColor: CupertinoColors.white,
-        ),
-        home: StoreBuilder<AppState>(
-          builder: (context, store) => SwitcherPage(),
+      child: StoreBuilder<AppState>(
+        builder: (context, store) => CupertinoApp(
+          debugShowCheckedModeBanner: false,
+          title: 'OBS Deck',
+          theme: this.store.state.settingsState.themeData,
+          home: SwitcherPage(),
         ),
       ),
     );

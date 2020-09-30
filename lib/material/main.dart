@@ -15,16 +15,12 @@ class MyAndroidApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
       store: this.store,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'OBS Deck',
-        theme: ThemeData(
-          primaryColor: const Color(0xFF1C306D),
-          accentColor: const Color(0xFFFFAD32),
-          scaffoldBackgroundColor: Colors.white,
-        ),
-        home: StoreBuilder<AppState>(
-          builder: (context, store) => SwitcherPage(),
+      child: StoreBuilder<AppState>(
+        builder: (context, store) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'OBS Deck',
+          theme: this.store.state.settingsState.themeData,
+          home: SwitcherPage(),
         ),
       ),
     );

@@ -1,3 +1,9 @@
+class ChangeThemeAction {
+  final String theme;
+
+  ChangeThemeAction(this.theme);
+}
+
 class ToggleConnectAction {
   final bool toggle;
 
