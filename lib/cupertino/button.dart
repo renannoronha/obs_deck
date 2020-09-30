@@ -5,20 +5,20 @@ class MyButton extends StatelessWidget {
   final bool visible;
 
   final List<BoxShadow> activeShadow = [
-    BoxShadow(color: CupertinoColors.systemGrey, offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
-    BoxShadow(color: CupertinoColors.systemYellow, offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
+    BoxShadow(color: CupertinoColors.systemGrey4, offset: Offset(1.0, 1.0), blurRadius: 4.0, spreadRadius: 1.0),
+    BoxShadow(color: Color.fromRGBO(255, 255, 200, 1), offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
   ];
   final List<BoxShadow> inactiveShadow = [
-    BoxShadow(color: CupertinoColors.systemGrey, offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
-    BoxShadow(color: CupertinoColors.white, offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
+    BoxShadow(color: CupertinoColors.systemGrey4, offset: Offset(1.0, 1.0), blurRadius: 4.0, spreadRadius: 1.0),
+    BoxShadow(color: CupertinoColors.systemGrey5, offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
   ];
   final List<Color> activeButton = [
-    CupertinoColors.systemYellow,
-    Color.fromRGBO(255, 251, 215, 1),
+    Color.fromRGBO(255, 255, 210, 1),
+    Color.fromRGBO(255, 251, 230, 1),
   ];
   final List<Color> inactiveButton = [
-    CupertinoColors.systemGrey,
-    CupertinoColors.systemGrey,
+    CupertinoColors.systemGrey5,
+    CupertinoColors.systemGrey6,
   ];
 
   MyButton({

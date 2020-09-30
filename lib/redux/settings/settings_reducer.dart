@@ -26,9 +26,11 @@ SettingsState settingsReducer(AppState state, dynamic action) {
 
 SettingsState _toggleConnectState(AppState state, ToggleConnectAction action) {
   if (action.toggle) {
-    return state.settingsState.copyWith(connectButtonLabel: 'Connected', connectButtonColor: Colors.red, connect: action.toggle);
+    return state.settingsState
+        .copyWith(connectButtonLabel: 'Connected', connectButtonColor: Colors.red, connect: action.toggle);
   } else {
-    return state.settingsState.copyWith(connectButtonLabel: 'Connect', connectButtonColor: Colors.grey[300], connect: action.toggle);
+    return state.settingsState.copyWith(
+        connectButtonLabel: 'Connect', connectButtonColor: Color.fromRGBO(199, 199, 199, 1), connect: action.toggle);
   }
 }
 
@@ -36,7 +38,10 @@ SettingsState _toggleStreamState(SettingsState state, ToggleStreamAction action)
   if (action.toggle) {
     return state.copyWith(streamButtonLabel: 'Streaming', streamButtonColor: Colors.red, stream: action.toggle);
   } else {
-    return state.copyWith(streamButtonLabel: 'Start Streaming', streamButtonColor: Colors.grey[300], stream: action.toggle);
+    return state.copyWith(
+        streamButtonLabel: 'Start Streaming',
+        streamButtonColor: Color.fromRGBO(199, 199, 199, 1),
+        stream: action.toggle);
   }
 }
 
@@ -44,7 +49,10 @@ SettingsState _toggleRecordState(SettingsState state, ToggleRecordAction action)
   if (action.toggle) {
     return state.copyWith(recordButtonLabel: 'Recording', recordButtonColor: Colors.red, record: action.toggle);
   } else {
-    return state.copyWith(recordButtonLabel: 'Start Recording', recordButtonColor: Colors.grey[300], record: action.toggle);
+    return state.copyWith(
+        recordButtonLabel: 'Start Recording',
+        recordButtonColor: Color.fromRGBO(199, 199, 199, 1),
+        record: action.toggle);
   }
 }
 
@@ -52,7 +60,8 @@ SettingsState _togglePauseState(SettingsState state, TogglePauseAction action) {
   if (action.toggle) {
     return state.copyWith(pauseButtonLabel: 'Resume Recording', pauseButtonColor: Colors.yellow, pause: action.toggle);
   } else {
-    return state.copyWith(pauseButtonLabel: 'Pause Recording', pauseButtonColor: Colors.grey[300], pause: action.toggle);
+    return state.copyWith(
+        pauseButtonLabel: 'Pause Recording', pauseButtonColor: Color.fromRGBO(199, 199, 199, 1), pause: action.toggle);
   }
 }
 
@@ -60,6 +69,6 @@ SettingsState _toggleStudioState(SettingsState state, ToggleStudioAction action)
   if (action.toggle) {
     return state.copyWith(studioButtonColor: Colors.green, studioMode: action.toggle);
   } else {
-    return state.copyWith(studioButtonColor: Colors.grey[300], studioMode: action.toggle);
+    return state.copyWith(studioButtonColor: Color.fromRGBO(199, 199, 199, 1), studioMode: action.toggle);
   }
 }
