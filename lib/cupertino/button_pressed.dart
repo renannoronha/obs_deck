@@ -19,11 +19,15 @@ class MyButtonPressed extends StatelessWidget {
       padding: EdgeInsets.all(1),
       child: Container(
         child: Center(
-          child: Text(
-            this.text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Text(
+              this.text.replaceAll(' ', '\n'),
+              maxLines: 5,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
