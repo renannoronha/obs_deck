@@ -92,7 +92,7 @@ class StudioModeOff extends StatelessWidget {
               ),
               GridView.extent(
                 shrinkWrap: true,
-                maxCrossAxisExtent: 120,
+                maxCrossAxisExtent: 100,
                 padding: EdgeInsets.only(top: 30, bottom: 5, left: 5, right: 5),
                 children: [
                       GestureDetector(
@@ -102,7 +102,8 @@ class StudioModeOff extends StatelessWidget {
                         },
                         child: MyLiveButton(text: 'LIVE'),
                       ),
-                      Container()
+                      Container(),
+                      Container(),
                     ] +
                     state.switcherState.transitionList
                         .map(
