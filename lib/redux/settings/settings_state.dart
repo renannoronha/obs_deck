@@ -43,7 +43,7 @@ class SettingsState {
   final String studioButtonLabel;
   final Color studioButtonColor;
   final bool studioMode;
-  
+
   final String theme;
   final dynamic themeData;
 
@@ -51,7 +51,7 @@ class SettingsState {
   final TextEditingController port;
   final TextEditingController password;
 
-  factory SettingsState.initial({String addr, String pt, String pass}) {
+  factory SettingsState.initial({String addr, String pt, String pass, String theme}) {
     return SettingsState(
       connectButtonLabel: 'Connect',
       connectButtonColor: Color.fromRGBO(199, 199, 199, 1),
@@ -68,8 +68,8 @@ class SettingsState {
       studioButtonLabel: 'Studio Mode',
       studioButtonColor: Color.fromRGBO(199, 199, 199, 1),
       studioMode: false,
-      theme: 'Light',
-      themeData: Themes().light,
+      theme: theme,
+      themeData: Themes().getThemeData(theme),
       address: TextEditingController(text: addr ?? '127.0.0.1'),
       port: TextEditingController(text: pt ?? '4444'),
       password: TextEditingController(text: pass ?? '123456'),

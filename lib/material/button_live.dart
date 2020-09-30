@@ -17,10 +17,7 @@ class MyLiveButton extends StatelessWidget {
         child: Text(
           this.text,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
         ),
       ),
       decoration: BoxDecoration(

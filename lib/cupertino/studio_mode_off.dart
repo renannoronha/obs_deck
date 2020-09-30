@@ -71,7 +71,7 @@ class StudioModeOff extends StatelessWidget {
                         },
                         child: e.active
                             ? MyButtonPressed(text: e.name, boxShadow: this.redBoxShadow, colors: this.redButton)
-                            : MyButton(text: e.name, visible: true),
+                            : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                       ),
                     )
                     .toList(),
@@ -114,7 +114,7 @@ class StudioModeOff extends StatelessWidget {
                             child: e.active
                                 ? MyButtonPressed(
                                     text: e.name, boxShadow: this.yellowBoxShadow, colors: this.yellowButton)
-                                : MyButton(text: e.name, visible: true),
+                                : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                           ),
                         )
                         .toList(),

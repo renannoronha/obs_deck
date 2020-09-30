@@ -21,7 +21,7 @@ class AppState {
   factory AppState.initial(SharedPreferences preferences) {
     return AppState(
       switcherState: SwitcherState.initial(),
-      settingsState: SettingsState.initial(addr: preferences.getString('address'), pt: preferences.getString('port'), pass: preferences.getString('password')),
+      settingsState: SettingsState.initial(addr: preferences.getString('address'), pt: preferences.getString('port'), pass: preferences.getString('password'), theme: preferences.getString('theme')),
       obs: new ObsWebsocket(),
       prefs: preferences,
     );

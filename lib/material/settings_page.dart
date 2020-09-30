@@ -82,7 +82,7 @@ class SettingsPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             state.settingsState.connectButtonLabel,
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -102,7 +102,7 @@ class SettingsPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             state.settingsState.streamButtonLabel,
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -122,7 +122,7 @@ class SettingsPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             state.settingsState.recordButtonLabel,
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -142,7 +142,7 @@ class SettingsPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             state.settingsState.pauseButtonLabel,
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -162,7 +162,7 @@ class SettingsPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             state.settingsState.studioButtonLabel,
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -171,26 +171,30 @@ class SettingsPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
-                    child: DropdownButton<String>(
-                      value: state.settingsState.theme,
-                      icon: Icon(Icons.arrow_downward),
-                      iconSize: 24,
-                      elevation: 16,
-                      style: TextStyle(color: Colors.deepPurple),
-                      underline: Container(
-                        height: 2,
-                        color: Colors.deepPurpleAccent,
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      child: Center(
+                        child: DropdownButton<String>(
+                          value: state.settingsState.theme,
+                          icon: Icon(Icons.arrow_downward),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(fontSize: 20),
+                          underline: Container(
+                            height: 2,
+                          ),
+                          onChanged: (String newValue) {
+                            StoreProvider.of<AppState>(context).dispatch(ChangeThemeAction(newValue));
+                          },
+                          items: <String>['Light', 'Dark'].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
                       ),
-                      onChanged: (String newValue) {
-                        print(newValue);
-                        StoreProvider.of<AppState>(context).dispatch(ChangeThemeAction(newValue));
-                      },
-                      items: <String>['Light', 'Dark'].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
                     ),
                   ),
                 ],

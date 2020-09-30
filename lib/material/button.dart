@@ -1,28 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:obs_deck/themes.dart';
 
 class MyButton extends StatelessWidget {
+  final String theme;
   final String text;
   final bool visible;
 
-  final List<BoxShadow> activeShadow = [
-    BoxShadow(color: Colors.grey[400], offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
-    BoxShadow(color: Colors.yellow[50], offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
-  ];
-  final List<BoxShadow> inactiveShadow = [
-    BoxShadow(color: Colors.grey[600], offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
-    BoxShadow(color: Colors.white, offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
-  ];
-  final List<Color> activeButton = [
-    Colors.yellow[50],
-    Color.fromRGBO(255, 251, 215, 1),
-  ];
-  final List<Color> inactiveButton = [
-    Colors.grey[50],
-    Colors.grey[50],
-  ];
-
   MyButton({
     Key key,
+    this.theme,
     this.text,
     this.visible,
   }) : super(key: key);
@@ -36,17 +22,15 @@ class MyButton extends StatelessWidget {
         child: Text(
           this.text,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.grey,
-        boxShadow: this.visible ? this.activeShadow : this.inactiveShadow,
+        boxShadow: this.visible ? Themes().getActiveShadow(theme) : Themes().getInactiveShadow(theme),
         gradient: RadialGradient(
-          colors: this.visible ? this.activeButton : this.inactiveButton,
+          colors: this.visible ? Themes().getActiveButton(theme) : Themes().getInactiveButton(theme),
           stops: [0, 1],
         ),
       ),

@@ -1,28 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:obs_deck/themes.dart';
 
 class MyButton extends StatelessWidget {
+  final String theme;
   final String text;
   final bool visible;
 
-  final List<BoxShadow> activeShadow = [
-    BoxShadow(color: CupertinoColors.systemGrey4, offset: Offset(1.0, 1.0), blurRadius: 4.0, spreadRadius: 1.0),
-    BoxShadow(color: Color.fromRGBO(255, 255, 200, 1), offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
-  ];
-  final List<BoxShadow> inactiveShadow = [
-    BoxShadow(color: CupertinoColors.systemGrey4, offset: Offset(1.0, 1.0), blurRadius: 4.0, spreadRadius: 1.0),
-    BoxShadow(color: CupertinoColors.systemGrey5, offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
-  ];
-  final List<Color> activeButton = [
-    Color.fromRGBO(255, 255, 210, 1),
-    Color.fromRGBO(255, 251, 230, 1),
-  ];
-  final List<Color> inactiveButton = [
-    CupertinoColors.systemGrey5,
-    CupertinoColors.systemGrey6,
-  ];
-
   MyButton({
     Key key,
+    this.theme,
     this.text,
     this.visible,
   }) : super(key: key);
@@ -48,9 +34,9 @@ class MyButton extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: CupertinoColors.systemGrey,
-        boxShadow: this.visible ? this.activeShadow : this.inactiveShadow,
+        boxShadow: this.visible ? Themes().getActiveShadow(theme) : Themes().getInactiveShadow(theme),
         gradient: RadialGradient(
-          colors: this.visible ? this.activeButton : this.inactiveButton,
+          colors: this.visible ? Themes().getActiveButton(theme) : Themes().getInactiveButton(theme),
           stops: [0, 1],
         ),
       ),

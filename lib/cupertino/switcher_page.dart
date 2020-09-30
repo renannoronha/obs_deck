@@ -86,7 +86,7 @@ class SwitcherPage extends StatelessWidget {
                             },
                             child: e.visible
                                 ? MyButtonPressed(text: e.name, boxShadow: this.blueBoxShadow, colors: this.blueButton)
-                                : MyButton(text: e.name, visible: e.visible),
+                                : MyButton(theme: state.settingsState.theme, text: e.name, visible: e.visible),
                           ),
                         )
                         .toList(),

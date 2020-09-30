@@ -103,7 +103,7 @@ class StudioModeOn extends StatelessWidget {
                                 text: e.name,
                                 boxShadow: this.greenBoxShadow,
                                 colors: this.greenButton)
-                            : MyButton(text: e.name, visible: true),
+                            : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                       ),
                     )
                     .toList(),
@@ -154,7 +154,7 @@ class StudioModeOn extends StatelessWidget {
                                     text: e.name,
                                     boxShadow: this.yellowBoxShadow,
                                     colors: this.yellowButton)
-                                : MyButton(text: e.name, visible: true),
+                                : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                           ),
                         )
                         .toList(),
@@ -193,7 +193,7 @@ class StudioModeOn extends StatelessWidget {
                                 text: e.name,
                                 boxShadow: this.redBoxShadow,
                                 colors: this.redButton)
-                            : MyButton(text: e.name, visible: true),
+                            : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                       ),
                     )
                     .toList(),

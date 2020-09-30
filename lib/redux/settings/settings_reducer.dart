@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:obs_deck/redux/app/app_state.dart';
 import 'package:obs_deck/redux/settings/settings_actions.dart';
@@ -8,21 +6,8 @@ import 'package:obs_deck/themes.dart';
 
 SettingsState settingsReducer(AppState state, dynamic action) {
   if (action is ChangeThemeAction) {
-    var newTheme;
-    try {
-      if (action.theme == 'Light') {
-        newTheme = Platform.isAndroid ? Themes().light : Themes().lightCupertino;
-      } else if (action.theme == 'Dark') {
-        newTheme = Platform.isAndroid ? Themes().dark : Themes().darkCupertino;
-      }
-    } catch (e) {
-      if (action.theme == 'Light') {
-        newTheme = Themes().light;
-      } else if (action.theme == 'Dark') {
-        newTheme = Themes().dark;
-      }
-    }
-    return state.settingsState.copyWith(theme: action.theme, themeData: newTheme);
+    state.prefs.setString('theme', action.theme);
+    return state.settingsState.copyWith(theme: action.theme, themeData: Themes().getThemeData(action.theme));
   } else if (action is ToggleConnectAction) {
     return _toggleConnectState(state, action);
   } else if (action is ToggleStreamAction) {

@@ -22,9 +22,7 @@ class MyButtonPressed extends StatelessWidget {
           child: Text(
             this.text,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
         decoration: BoxDecoration(
