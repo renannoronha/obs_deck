@@ -10,9 +10,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final store = createStore(prefs);
-  if (Platform.isAndroid) {
-    runApp(MyAndroidApp(store));
-  } else if (Platform.isIOS) {
-    runApp(MyCupertinoApp(store));
+  try {
+    if (Platform.isAndroid) {
+      runApp(MyAndroidApp(store));
+    } else if (Platform.isIOS) {
+      runApp(MyCupertinoApp(store));
+    }
+  } catch (e) {
+    print('Error MAIN: ' + e.toString());
+    if (e.toString() == 'Unsupported operation: Platform._operatingSystem') {
+      runApp(MyAndroidApp(store));
+    }
   }
 }
