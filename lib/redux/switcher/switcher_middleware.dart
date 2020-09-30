@@ -18,6 +18,8 @@ class SwitcherMiddleware extends MiddlewareClass<AppState> {
       return await _previewToggle(store.state, store.state.obs, next, action);
     } else if (action is ToggleTransitionAction) {
       return await _transitionToggle(store.state, store.state.obs, next, action);
+    } else if (action is ToggleSourceAction) {
+      return await _sourceToggle(store.state, store.state.obs, next, action);
     } else if (action is ChangeSceneAction) {
       return await _liveToggle(store.state, store.state.obs, next, action);
     }
@@ -52,6 +54,22 @@ class SwitcherMiddleware extends MiddlewareClass<AppState> {
       return next(action);
     } catch (e) {
       print('SetCurrentTransition ERROR: ' + e.toString());
+    }
+  }
+
+  Future<void> _sourceToggle(AppState state, ObsWebsocket obs, NextDispatcher next, ToggleSourceAction action) async {
+    try {
+      var sceneName = state.settingsState.studioMode
+          ? state.switcherState.previewList.firstWhere((element) => element.active).name
+          : state.switcherState.programList.firstWhere((element) => element.active).name;
+      await state.obs.send('SetSceneItemProperties', {
+        "scene-name": sceneName,
+        "item": action.source.name,
+        "visible": action.source.visible,
+      });
+      return next(action);
+    } catch (e) {
+      print('SetSceneItemProperties ERROR: ' + e.toString());
     }
   }
 

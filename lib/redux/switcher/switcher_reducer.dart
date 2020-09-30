@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:obs_deck/model/scene.dart';
+import 'package:obs_deck/model/source.dart';
 import 'package:obs_deck/model/transition.dart';
 import 'package:obs_deck/redux/app/app_state.dart';
 import 'package:obs_deck/redux/switcher/switcher_actions.dart';
@@ -23,13 +24,11 @@ SwitcherState switcherReducer(AppState state, dynamic action) {
   } else if (action is CurrentTransitionAction) {
     return state.switcherState.copyWith(transitionList: _newTransitionList(state.switcherState.transitionList, action));
   } else if (action is CurrentSourceListAction) {
-    if (action.actionSource == 'preview' && state.settingsState.studioMode) {
-      return state.switcherState.copyWith(sourceList: action.source);
-    } else if (action.actionSource == 'program' && !state.settingsState.studioMode) {
-      return state.switcherState.copyWith(sourceList: action.source);
-    }
+    return state.switcherState.copyWith(sourceList: action.source);
   } else if (action is LiveTransitionAction) {
     return state.switcherState.copyWith(transitionList: _liveTransitionList(state.switcherState.transitionList, action));
+  } else if (action is ToggleSourceAction) {
+    return state.switcherState.copyWith(sourceList: _toggleSourceState(state.switcherState.sourceList, action));
   }
   return state.switcherState;
 }
@@ -60,9 +59,9 @@ List<Transition> _liveTransitionList(List<Transition> itens, LiveTransitionActio
   return itens.map((e) => e.name == action.name ? Transition(e.name, e.duration, e.active, action.live) : Transition(e.name, e.duration, e.active, false)).toList();
 }
 
-// List<Source> _toggleSourceState(List<Source> state, ToggleSourceAction action) {
-//   return state.map((item) => item.name == action.source.name ? action.source : item).toList();
-// }
+List<Source> _toggleSourceState(List<Source> state, ToggleSourceAction action) {
+  return state.map((item) => item.name == action.source.name ? action.source : item).toList();
+}
 
 // SwitcherState _changeScene(SwitcherState state, ChangeSceneAction action) {
 //   return state;

@@ -226,7 +226,7 @@ class SettingsMiddleware extends MiddlewareClass<AppState> {
         var response = json.decode(e.toString().replaceAll('Exception: ', ''));
         print('GetPreviewScene ERROR: ' + response['error']);
       }
-      List<Source> sourceList = state.settingsState.studioMode ? sourceListPreview : sourceListProgram;
+      List<Source> sourceList = getStudioModeStatus['studio-mode'] ? sourceListPreview : sourceListProgram;
 
       // GetTransitionList
       var getTransitionList = await obs.send('GetTransitionList');
@@ -362,6 +362,12 @@ class SettingsMiddleware extends MiddlewareClass<AppState> {
       obs.event('TransitionEnd').listen((event) {
         print('TransitionEnd EVENT: ' + event.toString());
         next(LiveTransitionAction(event['name'], false));
+      });
+
+      // Sources events
+      obs.event('SceneItemVisibilityChanged').listen((event) {
+        print('SceneItemVisibilityChanged EVENT: ' + event.toString());
+        next(ToggleSourceAction(Source(event['item-name'], event['item-visible'])));
       });
     } catch (e) {
       print('SETTINGS LISTENERS ERROR: ' + e.toString());
