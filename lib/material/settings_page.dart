@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:obs_deck/redux/app/app_state.dart';
 import 'package:obs_deck/redux/settings/settings_actions.dart';
+import 'package:obs_deck/themes.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -180,7 +181,7 @@ class SettingsPage extends StatelessWidget {
                           icon: Icon(Icons.arrow_downward),
                           iconSize: 24,
                           elevation: 16,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 20, color: Themes().getDropdownColor(state.settingsState.theme)),
                           underline: Container(
                             height: 2,
                           ),

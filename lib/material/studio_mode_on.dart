@@ -5,64 +5,9 @@ import 'package:obs_deck/redux/switcher/switcher_actions.dart';
 import 'package:obs_deck/material/button.dart';
 import 'package:obs_deck/material/button_live.dart';
 import 'package:obs_deck/material/button_pressed.dart';
+import 'package:obs_deck/themes.dart';
 
 class StudioModeOn extends StatelessWidget {
-  final List<BoxShadow> greenBoxShadow = [
-    BoxShadow(
-        color: Color.fromRGBO(22, 222, 22, 1),
-        offset: Offset(1.0, 1.0),
-        blurRadius: 7.0,
-        spreadRadius: 1.0),
-    BoxShadow(
-        color: Color.fromRGBO(0, 255, 0, 1),
-        offset: Offset(-1.0, -1.0),
-        blurRadius: 7.0,
-        spreadRadius: 1.0),
-  ];
-  final List<Color> greenButton = [
-    Color.fromRGBO(120, 255, 120, 1),
-    Color.fromRGBO(100, 255, 100, 1),
-    Color.fromRGBO(60, 255, 60, 1),
-    Color.fromRGBO(0, 255, 0, 1),
-  ];
-
-  final List<BoxShadow> yellowBoxShadow = [
-    BoxShadow(
-        color: Color.fromRGBO(222, 222, 0, 1),
-        offset: Offset(1.0, 1.0),
-        blurRadius: 7.0,
-        spreadRadius: 1.0),
-    BoxShadow(
-        color: Color.fromRGBO(255, 255, 0, 1),
-        offset: Offset(-1.0, -1.0),
-        blurRadius: 7.0,
-        spreadRadius: 1.0),
-  ];
-  final List<Color> yellowButton = [
-    Color.fromRGBO(255, 255, 120, 1),
-    Color.fromRGBO(255, 255, 100, 1),
-    Color.fromRGBO(255, 255, 60, 1),
-    Color.fromRGBO(255, 255, 0, 1),
-  ];
-
-  final List<BoxShadow> redBoxShadow = [
-    BoxShadow(
-        color: Color.fromRGBO(222, 22, 22, 1),
-        offset: Offset(1.0, 1.0),
-        blurRadius: 7.0,
-        spreadRadius: 1.0),
-    BoxShadow(
-        color: Color.fromRGBO(255, 0, 0, 1),
-        offset: Offset(-1.0, -1.0),
-        blurRadius: 7.0,
-        spreadRadius: 1.0),
-  ];
-  final List<Color> redButton = [
-    Color.fromRGBO(255, 120, 120, 1),
-    Color.fromRGBO(255, 100, 100, 1),
-    Color.fromRGBO(255, 60, 60, 1),
-    Color.fromRGBO(255, 0, 0, 1),
-  ];
   final AppState state;
 
   StudioModeOn(this.state);
@@ -80,10 +25,7 @@ class StudioModeOn extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10),
                 child: Text(
                   'Preview',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto',
-                      fontSize: 20),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto', fontSize: 20),
                 ),
               ),
               GridView.extent(
@@ -94,15 +36,14 @@ class StudioModeOn extends StatelessWidget {
                     .map(
                       (e) => GestureDetector(
                         onTap: () {
-                          if (!e.active)
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(TogglePreviewAction(e));
+                          if (!e.active) StoreProvider.of<AppState>(context).dispatch(TogglePreviewAction(e));
                         },
                         child: e.active
                             ? MyButtonPressed(
                                 text: e.name,
-                                boxShadow: this.greenBoxShadow,
-                                colors: this.greenButton)
+                                boxShadow: Themes().getGreenShadow(state.settingsState.theme),
+                                colors: Themes().getGreenButton(state.settingsState.theme),
+                              )
                             : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                       ),
                     )
@@ -119,10 +60,7 @@ class StudioModeOn extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10),
                 child: Text(
                   'Transition',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto',
-                      fontSize: 20),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto', fontSize: 20),
                 ),
               ),
               GridView.extent(
@@ -132,10 +70,8 @@ class StudioModeOn extends StatelessWidget {
                 children: [
                       GestureDetector(
                         onTap: () {
-                          var transition = state.switcherState.transitionList
-                              .firstWhere((element) => element.active);
-                          StoreProvider.of<AppState>(context)
-                              .dispatch(ChangeSceneAction(transition));
+                          var transition = state.switcherState.transitionList.firstWhere((element) => element.active);
+                          StoreProvider.of<AppState>(context).dispatch(ChangeSceneAction(transition));
                         },
                         child: MyLiveButton(text: 'LIVE'),
                       ),
@@ -145,15 +81,14 @@ class StudioModeOn extends StatelessWidget {
                         .map(
                           (e) => GestureDetector(
                             onTap: () {
-                              if (!e.active)
-                                StoreProvider.of<AppState>(context)
-                                    .dispatch(ToggleTransitionAction(e));
+                              if (!e.active) StoreProvider.of<AppState>(context).dispatch(ToggleTransitionAction(e));
                             },
                             child: e.active
                                 ? MyButtonPressed(
                                     text: e.name,
-                                    boxShadow: this.yellowBoxShadow,
-                                    colors: this.yellowButton)
+                                    boxShadow: Themes().getYellowShadow(state.settingsState.theme),
+                                    colors: Themes().getYellowButton(state.settingsState.theme),
+                                  )
                                 : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                           ),
                         )
@@ -170,10 +105,7 @@ class StudioModeOn extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10),
                 child: Text(
                   'Program',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto',
-                      fontSize: 20),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto', fontSize: 20),
                 ),
               ),
               GridView.extent(
@@ -184,15 +116,14 @@ class StudioModeOn extends StatelessWidget {
                     .map(
                       (e) => GestureDetector(
                         onTap: () {
-                          if (!e.active)
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(ToggleProgramAction(e));
+                          if (!e.active) StoreProvider.of<AppState>(context).dispatch(ToggleProgramAction(e));
                         },
                         child: e.active
                             ? MyButtonPressed(
                                 text: e.name,
-                                boxShadow: this.redBoxShadow,
-                                colors: this.redButton)
+                                boxShadow: Themes().getRedShadow(state.settingsState.theme),
+                                colors: Themes().getRedButton(state.settingsState.theme),
+                              )
                             : MyButton(theme: state.settingsState.theme, text: e.name, visible: true),
                       ),
                     )
