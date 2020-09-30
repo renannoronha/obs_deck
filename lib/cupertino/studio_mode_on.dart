@@ -88,7 +88,7 @@ class StudioModeOn extends StatelessWidget {
               ),
               GridView.extent(
                 shrinkWrap: true,
-                maxCrossAxisExtent: 100,
+                maxCrossAxisExtent: 120,
                 padding: EdgeInsets.only(top: 30, bottom: 5, left: 5, right: 5),
                 children: state.switcherState.previewList
                     .map(
@@ -127,7 +127,7 @@ class StudioModeOn extends StatelessWidget {
               ),
               GridView.extent(
                 shrinkWrap: true,
-                maxCrossAxisExtent: 100,
+                maxCrossAxisExtent: 120,
                 padding: EdgeInsets.only(top: 30, bottom: 5, left: 5, right: 5),
                 children: [
                       GestureDetector(
@@ -178,7 +178,7 @@ class StudioModeOn extends StatelessWidget {
               ),
               GridView.extent(
                 shrinkWrap: true,
-                maxCrossAxisExtent: 100,
+                maxCrossAxisExtent: 120,
                 padding: EdgeInsets.only(top: 30, bottom: 5, left: 5, right: 5),
                 children: state.switcherState.programList
                     .map(

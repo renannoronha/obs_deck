@@ -73,7 +73,7 @@ class StudioModeOff extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          flex: 80,
+          flex: 70,
           child: Stack(
             children: [
               Padding(
@@ -88,7 +88,7 @@ class StudioModeOff extends StatelessWidget {
               ),
               GridView.extent(
                 shrinkWrap: true,
-                maxCrossAxisExtent: 100,
+                maxCrossAxisExtent: 120,
                 padding: EdgeInsets.only(top: 30, bottom: 5, left: 5, right: 5),
                 children: state.switcherState.programList
                     .map(
@@ -112,7 +112,7 @@ class StudioModeOff extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 20,
+          flex: 30,
           child: Stack(
             children: [
               Padding(
@@ -127,7 +127,7 @@ class StudioModeOff extends StatelessWidget {
               ),
               GridView.extent(
                 shrinkWrap: true,
-                maxCrossAxisExtent: 100,
+                maxCrossAxisExtent: 120,
                 padding: EdgeInsets.only(top: 30, bottom: 5, left: 5, right: 5),
                 children: [
                       GestureDetector(
