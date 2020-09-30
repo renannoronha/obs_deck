@@ -84,7 +84,9 @@ class SwitcherPage extends StatelessWidget {
                               // implement when possible to change source visibility through websocket
                               // if (!e.visible) StoreProvider.of<AppState>(context).dispatch(ToggleSourceAction(Source(e.name, !e.visible)));
                             },
-                            child: e.visible ? MyButtonPressed(text: e.name, boxShadow: this.blueBoxShadow, colors: this.blueButton) : MyButton(text: e.name, visible: e.visible),
+                            child: e.visible
+                                ? MyButtonPressed(text: e.name, boxShadow: this.blueBoxShadow, colors: this.blueButton)
+                                : MyButton(text: e.name, visible: e.visible),
                           ),
                         )
                         .toList(),

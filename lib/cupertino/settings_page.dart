@@ -126,7 +126,8 @@ class SettingsPage extends StatelessWidget {
                     child: CupertinoButton(
                       color: state.settingsState.studioButtonColor,
                       onPressed: () {
-                        StoreProvider.of<AppState>(context).dispatch(ToggleStudioAction(!state.settingsState.studioMode));
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(ToggleStudioAction(!state.settingsState.studioMode));
                       },
                       child: Container(
                         height: 50,
