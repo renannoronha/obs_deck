@@ -69,7 +69,7 @@ class SettingsState {
       studioButtonColor: Color.fromRGBO(199, 199, 199, 1),
       studioMode: false,
       theme: theme,
-      themeData: Themes().getThemeData(theme),
+      themeData: Themes().getThemeData(theme ?? 'Light'),
       address: TextEditingController(text: addr ?? '127.0.0.1'),
       port: TextEditingController(text: pt ?? '4444'),
       password: TextEditingController(text: pass ?? '123456'),
