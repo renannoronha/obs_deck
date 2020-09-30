@@ -46,8 +46,7 @@ class SettingsPage extends StatelessWidget {
                     child: CupertinoButton(
                       color: state.settingsState.connectButtonColor,
                       onPressed: () {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(ToggleConnectAction(null));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleConnectAction(null));
                       },
                       child: Container(
                         height: 50,
@@ -63,20 +62,11 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 40, left: 10, right: 10, bottom: 5),
+                    padding: const EdgeInsets.only(top: 40, left: 10, right: 10, bottom: 5),
                     child: CupertinoButton(
                       color: state.settingsState.streamButtonColor,
                       onPressed: () {
-                        var toggle;
-                        if (state.settingsState.streamButtonColor ==
-                            CupertinoColors.systemRed) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(ToggleStreamAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleStreamAction(state.settingsState.stream));
                       },
                       child: Container(
                         height: 50,
@@ -92,20 +82,11 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 5, left: 10, right: 10, bottom: 5),
+                    padding: const EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
                     child: CupertinoButton(
                       color: state.settingsState.recordButtonColor,
                       onPressed: () {
-                        var toggle;
-                        if (state.settingsState.recordButtonColor ==
-                            CupertinoColors.systemRed) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(ToggleRecordAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleRecordAction(!state.settingsState.record));
                       },
                       child: Container(
                         height: 50,
@@ -121,20 +102,11 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 5, left: 10, right: 10, bottom: 5),
+                    padding: const EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
                     child: CupertinoButton(
                       color: state.settingsState.pauseButtonColor,
                       onPressed: () {
-                        var toggle;
-                        if (state.settingsState.pauseButtonColor ==
-                            CupertinoColors.systemYellow) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(TogglePauseAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(TogglePauseAction(!state.settingsState.pause));
                       },
                       child: Container(
                         height: 50,
@@ -150,20 +122,11 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 5, left: 10, right: 10, bottom: 5),
+                    padding: const EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
                     child: CupertinoButton(
                       color: state.settingsState.studioButtonColor,
                       onPressed: () {
-                        bool toggle;
-                        if (state.settingsState.studioButtonColor ==
-                            CupertinoColors.systemGreen) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(ToggleStudioAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleStudioAction(!state.settingsState.studioMode));
                       },
                       child: Container(
                         height: 50,

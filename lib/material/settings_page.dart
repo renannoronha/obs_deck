@@ -94,13 +94,7 @@ class SettingsPage extends StatelessWidget {
                     child: RaisedButton(
                       color: state.settingsState.streamButtonColor,
                       onPressed: () {
-                        var toggle;
-                        if (state.settingsState.streamButtonColor == Colors.red) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context).dispatch(ToggleStreamAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleStreamAction(!state.settingsState.stream));
                       },
                       child: Container(
                         height: 50,
@@ -120,13 +114,7 @@ class SettingsPage extends StatelessWidget {
                     child: RaisedButton(
                       color: state.settingsState.recordButtonColor,
                       onPressed: () {
-                        var toggle;
-                        if (state.settingsState.recordButtonColor == Colors.red) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context).dispatch(ToggleRecordAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleRecordAction(!state.settingsState.record));
                       },
                       child: Container(
                         height: 50,
@@ -146,13 +134,7 @@ class SettingsPage extends StatelessWidget {
                     child: RaisedButton(
                       color: state.settingsState.pauseButtonColor,
                       onPressed: () {
-                        var toggle;
-                        if (state.settingsState.pauseButtonColor == Colors.yellow) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context).dispatch(TogglePauseAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(TogglePauseAction(!state.settingsState.pause));
                       },
                       child: Container(
                         height: 50,
@@ -172,13 +154,7 @@ class SettingsPage extends StatelessWidget {
                     child: RaisedButton(
                       color: state.settingsState.studioButtonColor,
                       onPressed: () {
-                        bool toggle;
-                        if (state.settingsState.studioButtonColor == Colors.green) {
-                          toggle = false;
-                        } else {
-                          toggle = true;
-                        }
-                        StoreProvider.of<AppState>(context).dispatch(ToggleStudioAction(toggle));
+                        StoreProvider.of<AppState>(context).dispatch(ToggleStudioAction(!state.settingsState.studioMode));
                       },
                       child: Container(
                         height: 50,

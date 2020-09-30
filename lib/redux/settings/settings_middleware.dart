@@ -226,7 +226,7 @@ class SettingsMiddleware extends MiddlewareClass<AppState> {
         var response = json.decode(e.toString().replaceAll('Exception: ', ''));
         print('GetPreviewScene ERROR: ' + response['error']);
       }
-      List<Source> sourceList = state.settingsState.studioButtonColor == Colors.green ? sourceListPreview : sourceListProgram;
+      List<Source> sourceList = state.settingsState.studioMode ? sourceListPreview : sourceListProgram;
 
       // GetTransitionList
       var getTransitionList = await obs.send('GetTransitionList');
