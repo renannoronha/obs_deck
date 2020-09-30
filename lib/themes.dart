@@ -62,7 +62,7 @@ class Themes {
   ];
   final List<BoxShadow> inactiveShadowLight = [
     BoxShadow(color: Colors.grey[600], offset: Offset(1.0, 1.0), blurRadius: 4.0, spreadRadius: 1.0),
-    BoxShadow(color: Colors.grey[800], offset: Offset(-1.0, -1.0), blurRadius: 4.0, spreadRadius: 1.0),
+    BoxShadow(color: Colors.white, offset: Offset(-1.0, -1.0), blurRadius: 4.0, spreadRadius: 1.0),
   ];
   final List<Color> activeButtonLight = [
     Color.fromRGBO(255, 255, 210, 0),
