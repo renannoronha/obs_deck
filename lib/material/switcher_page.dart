@@ -87,7 +87,7 @@ class SwitcherPage extends StatelessWidget {
                   ],
                 ),
               ),
-              state.settingsState.studioButtonColor == Colors.green
+              state.settingsState.studioMode
                   ? StudioModeOn(state)
                   : StudioModeOff(state),
               Stack(

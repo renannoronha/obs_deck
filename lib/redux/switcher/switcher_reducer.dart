@@ -23,9 +23,9 @@ SwitcherState switcherReducer(AppState state, dynamic action) {
   } else if (action is CurrentTransitionAction) {
     return state.switcherState.copyWith(transitionList: _newTransitionList(state.switcherState.transitionList, action));
   } else if (action is CurrentSourceListAction) {
-    if (action.actionSource == 'preview' && state.settingsState.studioButtonColor == Colors.green) {
+    if (action.actionSource == 'preview' && state.settingsState.studioMode) {
       return state.switcherState.copyWith(sourceList: action.source);
-    } else if (action.actionSource == 'program' && state.settingsState.studioButtonColor != Colors.green) {
+    } else if (action.actionSource == 'program' && !state.settingsState.studioMode) {
       return state.switcherState.copyWith(sourceList: action.source);
     }
   } else if (action is LiveTransitionAction) {

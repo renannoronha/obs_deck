@@ -26,7 +26,7 @@ class SwitcherMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _programToggle(AppState state, ObsWebsocket obs, NextDispatcher next, ToggleProgramAction action) async {
     try {
-      if (state.settingsState.studioButtonColor != Colors.green) {
+      if (!state.settingsState.studioMode) {
         await state.obs.send('SetCurrentScene', {"scene-name": action.scene.name});
       }
       return next(action);
@@ -37,7 +37,7 @@ class SwitcherMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _previewToggle(AppState state, ObsWebsocket obs, NextDispatcher next, TogglePreviewAction action) async {
     try {
-      if (state.settingsState.studioButtonColor == Colors.green) {
+      if (state.settingsState.studioMode) {
         await state.obs.send('SetPreviewScene', {"scene-name": action.scene.name});
       }
       return next(action);
