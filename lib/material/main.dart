@@ -21,7 +21,7 @@ class MyAndroidApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: const Color(0xFF1C306D),
           accentColor: const Color(0xFFFFAD32),
-          scaffoldBackgroundColor: Colors.transparent,
+          scaffoldBackgroundColor: Colors.white,
         ),
         home: StoreBuilder<AppState>(
           builder: (context, store) => SwitcherPage(),
