@@ -27,6 +27,7 @@ class MyButton extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
+              color: CupertinoColors.black,
             ),
           ),
         ),

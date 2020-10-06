@@ -19,6 +19,7 @@ class MyLiveButton extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: CupertinoColors.black,
             fontSize: 20,
           ),
         ),
@@ -28,10 +29,7 @@ class MyLiveButton extends StatelessWidget {
         color: CupertinoColors.systemGrey,
         boxShadow: [
           BoxShadow(
-              color: Color.fromRGBO(222, 22, 22, 1),
-              offset: Offset(1.0, 1.0),
-              blurRadius: 7.0,
-              spreadRadius: 1.0),
+              color: Color.fromRGBO(222, 22, 22, 1), offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
           // BoxShadow(color: Color.fromRGBO(255, 0, 0, 1), offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
         ],
         gradient: RadialGradient(

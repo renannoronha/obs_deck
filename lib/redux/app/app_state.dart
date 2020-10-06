@@ -21,7 +21,11 @@ class AppState {
   factory AppState.initial(SharedPreferences preferences) {
     return AppState(
       switcherState: SwitcherState.initial(),
-      settingsState: SettingsState.initial(addr: preferences.getString('address'), pt: preferences.getString('port'), pass: preferences.getString('password'), theme: preferences.getString('theme')),
+      settingsState: SettingsState.initial(
+          addr: preferences.getString('address'),
+          pt: preferences.getString('port'),
+          pass: preferences.getString('password'),
+          theme: preferences.getString('theme') ?? 'Light'),
       obs: new ObsWebsocket(),
       prefs: preferences,
     );
@@ -41,7 +45,12 @@ class AppState {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is AppState && switcherState == other.switcherState && settingsState == other.settingsState && obs == other.obs && prefs == other.prefs;
+      identical(this, other) ||
+      other is AppState &&
+          switcherState == other.switcherState &&
+          settingsState == other.settingsState &&
+          obs == other.obs &&
+          prefs == other.prefs;
 
   @override
   int get hashCode => switcherState.hashCode ^ settingsState.hashCode ^ obs.hashCode ^ prefs.hashCode;

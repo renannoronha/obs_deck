@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:obs_deck/data/obs_websocket.dart';
 import 'package:obs_deck/model/scene.dart';
@@ -232,7 +231,8 @@ class SettingsMiddleware extends MiddlewareClass<AppState> {
       var getTransitionList = await obs.send('GetTransitionList');
       List<Transition> transitionList = [];
       for (dynamic transition in getTransitionList['transitions']) {
-        transitionList.add(Transition(transition['name'], 300, transition['name'] == getTransitionList['current-transition'], false));
+        transitionList.add(
+            Transition(transition['name'], 300, transition['name'] == getTransitionList['current-transition'], false));
       }
 
       // reload switcher interface
@@ -279,7 +279,11 @@ class SettingsMiddleware extends MiddlewareClass<AppState> {
         // $("#recTimecode").html(data.recTimecode);
         // $("#strain").html(data.strain.toFixed(2));
         // $("#streamTimecode").html(data.streamTimecode);
-        print('StreamStatus: ' + event['stream-timecode'].toString() + ' at ' + event['kbits-per-sec'].toString() + 'Kb/s');
+        print('StreamStatus: ' +
+            event['stream-timecode'].toString() +
+            ' at ' +
+            event['kbits-per-sec'].toString() +
+            'Kb/s');
         next(
           StatsAction(
             Stats(

@@ -46,8 +46,13 @@ class Themes {
   );
 
   final darkCupertino = CupertinoThemeData(
-    primaryColor: CupertinoColors.systemBlue,
-    scaffoldBackgroundColor: CupertinoColors.white,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: CupertinoColors.darkBackgroundGray,
+    textTheme: CupertinoTextThemeData(
+      actionTextStyle: TextStyle(
+        color: CupertinoColors.black,
+      ),
+    ),
   );
 
   dynamic getThemeData(String theme) {
@@ -117,13 +122,29 @@ class Themes {
     CupertinoColors.systemGrey6,
   ];
 
+  final List<BoxShadow> activeShadowDarkCupertino = [
+    BoxShadow(color: CupertinoColors.systemGrey3, offset: Offset(1.0, 1.0), blurRadius: 4.0, spreadRadius: 1.0),
+    BoxShadow(color: Color.fromRGBO(255, 255, 200, 1), offset: Offset(-1.0, -1.0), blurRadius: 4.0, spreadRadius: 1.0),
+  ];
+  final List<BoxShadow> inactiveShadowDarkCupertino = [
+    BoxShadow(color: CupertinoColors.systemGrey, offset: Offset(1.0, 1.0), blurRadius: 5.0, spreadRadius: 1.0),
+    BoxShadow(color: CupertinoColors.systemGrey2, offset: Offset(-1.0, -1.0), blurRadius: 4.0, spreadRadius: 1.0),
+  ];
+  final List<Color> activeButtonDarkCupertino = [
+    Color.fromRGBO(255, 255, 210, 0),
+    Color.fromRGBO(255, 251, 230, 0),
+  ];
+  final List<Color> inactiveButtonDarkCupertino = [
+    CupertinoColors.systemGrey,
+    CupertinoColors.systemGrey,
+  ];
+
   dynamic getActiveShadow(String theme) {
     try {
       if (theme == 'Light') {
         return Platform.isAndroid ? this.activeShadowLight : this.activeShadowLightCupertino;
       } else if (theme == 'Dark') {
-        return Platform.isAndroid ? this.activeShadowDark : null;
-        // return Platform.isAndroid ? this.activeShadowDark : this.activeShadowDarkCupertino;
+        return Platform.isAndroid ? this.activeShadowDark : this.activeShadowDarkCupertino;
       }
     } catch (e) {
       if (theme == 'Light') {
@@ -139,8 +160,7 @@ class Themes {
       if (theme == 'Light') {
         return Platform.isAndroid ? this.inactiveShadowLight : this.inactiveShadowLightCupertino;
       } else if (theme == 'Dark') {
-        return Platform.isAndroid ? this.inactiveShadowDark : null;
-        // return Platform.isAndroid ? this.inactiveShadowDark : this.inactiveShadowDarkCupertino;
+        return Platform.isAndroid ? this.inactiveShadowDark : this.inactiveShadowDarkCupertino;
       }
     } catch (e) {
       if (theme == 'Light') {
@@ -156,8 +176,7 @@ class Themes {
       if (theme == 'Light') {
         return Platform.isAndroid ? this.activeButtonLight : this.activeButtonLightCupertino;
       } else if (theme == 'Dark') {
-        return Platform.isAndroid ? this.activeButtonDark : null;
-        // return Platform.isAndroid ? this.activeButtonDark : this.activeButtonDarkCupertino;
+        return Platform.isAndroid ? this.activeButtonDark : this.activeButtonDarkCupertino;
       }
     } catch (e) {
       if (theme == 'Light') {
@@ -173,8 +192,7 @@ class Themes {
       if (theme == 'Light') {
         return Platform.isAndroid ? this.inactiveButtonLight : this.inactiveButtonLightCupertino;
       } else if (theme == 'Dark') {
-        return Platform.isAndroid ? this.inactiveButtonDark : null;
-        // return Platform.isAndroid ? this.inactiveButtonDark : this.inactiveButtonDarkCupertino;
+        return Platform.isAndroid ? this.inactiveButtonDark : this.inactiveButtonDarkCupertino;
       }
     } catch (e) {
       if (theme == 'Light') {
@@ -218,7 +236,6 @@ class Themes {
     Color.fromRGBO(255, 0, 0, 1),
   ];
 
-  
   final List<BoxShadow> greenBoxShadowCupertino = [
     BoxShadow(color: Color.fromRGBO(22, 222, 22, 1), offset: Offset(1.0, 1.0), blurRadius: 7.0, spreadRadius: 1.0),
     BoxShadow(color: Color.fromRGBO(0, 255, 0, 1), offset: Offset(-1.0, -1.0), blurRadius: 7.0, spreadRadius: 1.0),
