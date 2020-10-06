@@ -21,4 +21,4 @@ I don't have plans to publish this app to App Store, due to costs.
 ## Contributing
 
 This is a small project, if you want to help contatct me [here](https://discord.gg/UQYsZw7).
-If you want to publish this app to the App Store for free, contac me en the same link.
+If you want to publish this app to the App Store for free, contac me in the same link.
