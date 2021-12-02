@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:obs_deck/model/scene.dart';
 import 'package:obs_deck/model/source.dart';
 import 'package:obs_deck/model/transition.dart';
